@@ -30,16 +30,57 @@ Eclipse的设计思想是：一切皆插件。Eclipse核心很小，其它所有
 ## 插件安装
 ----------------
 Eclipse插件的安装方法大体有以下几种方式：
-（第一种）直接复制法
+@直接复制法
 假设Eclipse的安装目录在C:\eclipse，解压下载的eclipse 插件或者安装eclipse 插件到指定目录AA(如：c:\AA)文件夹，打开AA 文件夹，在AA文件夹里分别包含两个文件夹features和plugins ，然后把两个文件夹里的文件分别复制到C:\eclipse下所对应的文件夹下的features 和plugins 下，一般的把插件文件直接复制到eclipse目录里是最直接也是最愚蠢的一种方法！因为日后想要删除这些插件会非常的困难，不推荐使用。
 注意：直接将插件包解压到plugins文件夹下之后，重启eclipse，可能不会加载新的插件。
 解决方法是：
 1、打开命令行，到当前eclipse的目录下，输入eclipse -clean，重新启动eclipse，这样eclipse就会加上新的插件了。
 2、如果插件不能生效，则请将eclipse\configuration\org.eclipse.update目录删除后再启动eclipse；
 你可以在eclipse的菜单"Help"-->"About Eclipse SDK"-->"Feature Details" 和"Plug-in Details"中看到新安装的插件。
-（第二种）使用link文件法
+@使用link文件法
 下载下来的插件可能有几种形式：一是单独的Jar文件，二是plugins和features两个文件夹，三是一个单独的eclipse文件夹。
-a.准备工作：如果插件是一个单独的jar文件夹，那么需要做三件事情，先捡一个plugins文件夹，把jar文件放入其中；再建一个eclipse文件夹，把plugins放入其中；最后
+a.准备工作 
+如果插件是一个单独的jar文件，那么你需要做三件事:先建一个plugins文件夹，把jar文件放入其中， 
+
+再建一个eclipse文件夹，把plugins放入其中， 
+
+最后，打个比方：如果你下载的是一个名为WBPro的插件，你需要建一个WBPro文件夹 
+
+，把刚才的eclipse文件夹放入其中。(不一定非得命名为WBPro，你可以用其他名字， 
+
+如AAA，bb等，注：此句话可先不看)。好了，插件的大致结构出来了，如下 
+
+WBPro/eclipse /plugins/**.jar 
+
+
+如果插件是plugins和features两个文件夹（或只有plugins文件夹）， 
+
+请建一个名为eclipse的文件夹，把上面的两个文件夹放入其中， 
+
+再建一个名为WBPro的文件夹，把刚才的eclipse文件夹放入其中，插件的大致结构如 
+
+下:WBPro/eclipse /{plugins，features}如果插件就是一个eclipse文件夹，请新建 
+
+一个WBPro文件夹，把eclipse放入其中，插件的结构如下：WBPro/eclipse 
+
+
+2,开始安装 
+
+找到你的eclipse ，在其下建两个文件夹，一个是extplugins，一个是links，结构如 
+
+下{eclipse/extplugins,links}, 
+
+把你刚才建立的插件WBPro放入extplugins中， 
+
+然后在links文件夹下，建立一个txt文本，在里面写入：path=extplugins/WBPro,注 
+
+意是“/”,而不是“\”,再把文本文件命名为WBPro.link，注意全名是WBPro.link， 
+
+而不是WBPro.link.txt， 
+
+好了，启动eclipse，在菜单栏点击window->Preferences,在弹出来的对话框中，看左 
+
+边的导航栏，如果里面有你的插件名，如WBPro，恭喜你插件安装成功！ 
 a.假设Eclipse的安装目录在C:\eclipse，在该文件夹下，新建这样的目录结构C:\eclipse\PluginsEclipse\jode\eclipse；
 b.解压下载的eclipse 插件或者安装eclipse 插件到指定目录BB（如：C:\BB）文件夹，打开BB文件夹，然后把 BB文件夹里的两个文件夹features和plugins复制到刚新建好的，这样eclipse中就有了两个插件目录features and plugins下。
 c.在C:\eclipse目录中新建links（C:\eclipse\links）目录，在links目录中建立一个以link为扩展名的文本文件如jode.link，内容如下path=C:/eclipse/PluginsEclipse/jode 或者path=C:\\eclipse\\PluginsEclipse\\jode（插件的目录），保存后重启eclipse插件就会安装完成。
@@ -90,3 +131,11 @@ Preferences > Favorites
 自动补全功能也可以进行必要的静态引入。比方说在使用DSL的诸多功能时，这就非常有用。很明显，你需要谨慎决断，哪些是你真正最常用到的类库，以及哪些是这些类库中你最常用到的类。如果你是jOOQ blog(或是其联盟的一员)的用户，我可以给你一个提示。即永远把org.jooq.impl.DSL纳入收藏。
 
 ## 
+——————————————插件管理———————————————————— 
+   启动eclipse，在菜单Help->Software Updates->Manage Configuration…下，启用或 
+
+者禁用插件。 
+三、其它补充： 
+
+1. 插件可以分别安装在多个自定义的目录中。 
+2. 
