@@ -139,3 +139,55 @@ Preferences > Favorites
 
 1. 插件可以分别安装在多个自定义的目录中。 
 2. 
+eclipse.ini文件
+-startup
+plugins/org.eclipse.equinox.launcher_1.2.0.v20110502.jar
+--launcher.library
+plugins/org.eclipse.equinox.launcher.win32.win32.x86_1.1.100.v20110502
+-product
+org.eclipse.epp.package.jee.product
+--launcher.defaultAction
+openFile
+--launcher.XXMaxPermSize//最大堆大小。
+256M
+-showsplash
+org.eclipse.platform
+--launcher.XXMaxPermSize
+256m
+--launcher.defaultAction
+openFile
+-vm
+D:\glassfish3\jdk\bin\javaw.exe   
+//注意: -vm的设置要写在两行，写在一行不能生效；这两行要定在-vmargs之前，不然也不能生效。
+//这两行的作用是为eclipse指定JRE，也可以将-vm设置为C:\Program Files\Java\jdk1.6.0_10\bin\
+-vmargs //说明后面是VM的参数
+-Dosgi.requiredJavaVersion=1.5
+-Xms40m//虚拟机占用系统的最小内存,初始分配
+-Xmx512m//虚拟机占用系统的最大内存,按需分配
+
+
+Project->Build Automatically
+最近做项目，每次保存修改的东西。myeclipse都会building workspace（重新编译）一下。并且那 building的速度真不够慢的啊。 严重影响编程速度。 在网上也发现遇到此问题的很多，但是解决的方法不是很多啊。
+大部分都是说把菜单栏project下的building automatically勾掉。不过这样是不building了。 但是你所做的修改在客户端都没有显示。必须在勾选building automatically 。这样项目还是会出现building workspace。
+治标不治本啊（说白点就是减少了building 次数，但是需要手动去控制building）
+在网上找到了一些资料整理出了一个自己的方法：
+   1.选择菜单栏里的project里的properties；
+（如果properties显示为不可用（灰色），就先build all或者 build   project，就会出现properties）；
+   2.进去找到builders 把 validation和javaScript Validator 不选中。；
+ 如上操作就可以了。在去myeclipse中修改保存下。   building workspace应该消失了。
+快捷键：
+Ctrl+shift+t /检索类
+Ctrl+shift+r/检索资源
+Ctrl+shift+f/代码格式化
+Ctrl+/或Ctrl+7/单行（取消）注释
+Ctrl+q/检索java关键字
+Ctrl+w/保存后关闭当前类
+Ctrl+e/查看当前窗口下已打开的所有资源
+Ctrl+d/删除当前行
+Ctrl+g/search操作
+Ctrl+h/search操作
+Ctrl+l/代码行定位
+Ctrl+m/最大（小）化
+Alter+/: 辅助快捷键
+
+
