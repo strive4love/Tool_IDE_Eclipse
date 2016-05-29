@@ -135,3 +135,5 @@ Ctrl+m/最大（小）化
 Alter+/: 辅助快捷键
 所有快捷键的设置：windows -> properties -> General -> Keys
 
+# 还原和重置窗口布局
+Windows -> Reset Perspectiv...
